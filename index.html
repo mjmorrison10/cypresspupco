@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cypress Pup Co. | Dog Walking & Pet Sitting in Cypress, CA</title>
+  <meta name="description" content="Cypress Pup Co. provides reliable dog walking, drop-in visits, and overnight pet sitting in Cypress, Los Alamitos, La Palma, Buena Park, and nearby Orange County communities. Book a free meet & greet." />
+  <meta name="theme-color" content="#f5a623" />
+  <meta property="og:title" content="Cypress Pup Co. | Trusted Dog Walking in Cypress, CA" />
+  <meta property="og:description" content="Warm, reliable dog walking and pet sitting for Cypress and nearby Orange County communities. Book a free meet & greet with founder Michael Morrison." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="cypress-pup-co-hero.png" />
+  <style>
+    :root{
+      --ink:#1d2a2e;
+      --muted:#5f6f73;
+      --cream:#fff8ec;
+      --cream-2:#fff2da;
+      --sun:#f5a623;
+      --sun-dark:#d88400;
+      --sage:#7aa874;
+      --ocean:#3c8dbc;
+      --clay:#c9704a;
+      --white:#ffffff;
+      --line:rgba(29,42,46,.12);
+      --shadow:0 24px 70px rgba(29,42,46,.14);
+      --radius:28px;
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--cream),#fff 38%,#fffaf2 100%);
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+    .topbar{
+      position:sticky;top:0;z-index:30;
+      backdrop-filter:blur(18px);
+      background:rgba(255,248,236,.86);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.04em;font-size:1.22rem}
+    .logo{
+      width:44px;height:44px;border-radius:16px;
+      background:radial-gradient(circle at 30% 20%,#fff 0 16%,transparent 17%),linear-gradient(135deg,var(--sun),#ffce6b);
+      box-shadow:0 10px 24px rgba(245,166,35,.35);
+      display:grid;place-items:center;position:relative;overflow:hidden;
+    }
+    .logo svg{width:28px;height:28px;filter:drop-shadow(0 2px 1px rgba(0,0,0,.08))}
+    .navlinks{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:.96rem;font-weight:700}
+    .navlinks a:hover{color:var(--ink)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:48px;padding:0 20px;border-radius:999px;
+      font-weight:900;border:1px solid transparent;transition:.2s ease;
+      cursor:pointer;font-family:inherit;font-size:1rem;
+    }
+    .btn-primary{background:var(--ink);color:#fff;box-shadow:0 14px 30px rgba(29,42,46,.18)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(29,42,46,.25)}
+    .btn-sun{background:linear-gradient(135deg,var(--sun),#ffc75f);color:#291d06;box-shadow:0 14px 28px rgba(245,166,35,.27)}
+    .btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+    .btn-ghost:hover{border-color:rgba(29,42,46,.25);transform:translateY(-2px)}
+    .hero{position:relative;overflow:hidden;padding:74px 0 52px}
+    .hero:before{
+      content:"";position:absolute;inset:-160px -160px auto auto;width:480px;height:480px;
+      border-radius:50%;background:rgba(122,168,116,.18);filter:blur(4px);z-index:-1;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.72);color:var(--muted);font-weight:800;font-size:.92rem}
+    .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 6px rgba(122,168,116,.14)}
+    h1{font-size:clamp(2.6rem,6vw,5.6rem);line-height:.94;letter-spacing:-.075em;margin:22px 0 20px}
+    .lead{font-size:clamp(1.08rem,2vw,1.35rem);color:var(--muted);max-width:690px;margin:0 0 28px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin:28px 0}
+    .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px;max-width:680px}
+    .trust-pill{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;gap:10px;align-items:flex-start;box-shadow:0 10px 30px rgba(29,42,46,.06)}
+    .trust-pill b{display:block;font-size:.92rem}.trust-pill span{color:var(--muted);font-size:.83rem}
+    .icon-circle{flex:0 0 34px;width:34px;height:34px;border-radius:13px;background:var(--cream-2);display:grid;place-items:center;color:var(--sun-dark)}
+    .hero-card{position:relative}
+    .photo-shell{border-radius:36px;overflow:hidden;box-shadow:var(--shadow);border:10px solid #fff;background:#fff;transform:rotate(1deg)}
+    .photo-shell img{aspect-ratio:4/4.7;object-fit:cover;width:100%}
+    .floating-card{position:absolute;left:-24px;bottom:34px;width:min(280px,70%);background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:0 20px 60px rgba(29,42,46,.16)}
+    .floating-card strong{font-size:1.02rem}.floating-card p{margin:6px 0 0;color:var(--muted);font-size:.92rem}
+    section{padding:74px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}.section-head h2{font-size:clamp(2rem,4vw,3.35rem);letter-spacing:-.055em;line-height:1;margin:0}.section-head p{color:var(--muted);max-width:520px;margin:0;font-size:1.05rem}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 18px 50px rgba(29,42,46,.07)}.card h3{margin:16px 0 8px;font-size:1.35rem;letter-spacing:-.03em}.card p{color:var(--muted);margin:0 0 18px}.price{display:inline-flex;background:var(--cream-2);padding:9px 13px;border-radius:999px;font-weight:900;color:#5b3a04}
+    .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}.panel{background:var(--ink);color:#fff;border-radius:36px;padding:36px;position:relative;overflow:hidden}.panel:after{content:"";position:absolute;right:-90px;top:-90px;width:240px;height:240px;background:rgba(245,166,35,.24);border-radius:50%}.panel h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1;letter-spacing:-.055em;margin:0 0 18px}.panel p{color:rgba(255,255,255,.76);font-size:1.06rem}.checklist{display:grid;gap:12px}.check{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}.check svg{flex:0 0 22px;margin-top:2px;color:var(--sage)}.check b{display:block}.check span{color:var(--muted)}
+    .process{counter-reset:step;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{counter-increment:step;background:#fff;border:1px solid var(--line);border-radius:26px;padding:24px;position:relative}.step:before{content:counter(step);width:38px;height:38px;border-radius:14px;background:var(--sun);display:grid;place-items:center;font-weight:950;margin-bottom:28px;color:#2b1d02}.step h3{margin:0 0 8px}.step p{margin:0;color:var(--muted);font-size:.96rem}
+    .service-area{background:linear-gradient(135deg,#fff,var(--cream-2));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.map-card{min-height:390px;border-radius:36px;background:radial-gradient(circle at 25% 30%,rgba(60,141,188,.24),transparent 24%),radial-gradient(circle at 74% 66%,rgba(245,166,35,.28),transparent 25%),linear-gradient(135deg,#e9f5f8,#fff8ec);border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden;padding:28px}.map-card svg{position:absolute;inset:0;width:100%;height:100%;opacity:.62}.area-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.tag{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-weight:800;color:var(--muted)}
+    .quote{background:#fff;border:1px solid var(--line);border-radius:36px;padding:34px;box-shadow:var(--shadow)}.quote p{font-size:1.3rem;line-height:1.45;margin:0 0 18px}.stars{color:var(--sun-dark);letter-spacing:3px;font-size:1.2rem}.placeholder-review{color:var(--muted);font-size:.95rem;margin-top:8px}
+    .booking{background:var(--ink);color:#fff;border-radius:44px;padding:42px;display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start;box-shadow:var(--shadow)}.booking h2{font-size:clamp(2rem,4vw,3.3rem);line-height:1;letter-spacing:-.055em;margin:0 0 14px}.booking p{color:rgba(255,255,255,.76)}form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}label{font-weight:850;font-size:.9rem}input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.1);color:#fff;border-radius:16px;padding:14px 14px;font:inherit;outline:none}input::placeholder,textarea::placeholder{color:rgba(255,255,255,.5)}select option{color:var(--ink)}textarea{min-height:104px;resize:vertical}.form-note{font-size:.88rem;color:rgba(255,255,255,.62);grid-column:1/-1;margin:0}.success{display:none;grid-column:1/-1;background:rgba(122,168,116,.18);border:1px solid rgba(122,168,116,.45);border-radius:16px;padding:14px;color:#eaffeb;font-weight:800}.success.show{display:block}
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}.faq details{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}.faq summary{cursor:pointer;font-weight:900}.faq p{color:var(--muted);margin:12px 0 0}
+    footer{padding:44px 0;border-top:1px solid var(--line);background:#fff}.footer-grid{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;color:var(--muted)}.footer-grid b{color:var(--ink)}
+    .mobile-cta{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:40;gap:10px}.mobile-cta a{flex:1}
+    @media(max-width:900px){.navlinks{display:none}.hero{padding-top:42px}.hero-grid,.split,.area-grid,.booking{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.trust-row{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}.floating-card{left:14px}.mobile-cta{display:flex}body{padding-bottom:76px}form{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:12px}}
+    @media(max-width:560px){.wrap{width:min(100% - 24px,var(--max))}.process{grid-template-columns:1fr}.faq{grid-template-columns:1fr}.booking{padding:24px;border-radius:30px}.photo-shell{border-width:7px;border-radius:28px}.hero-actions .btn{width:100%}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PetService",
+    "name": "Cypress Pup Co.",
+    "image": "cypress-pup-co-hero.png",
+    "description": "Dog walking, drop-in visits, and overnight pet sitting in Cypress, CA and surrounding Orange County communities.",
+    "telephone": "+17145760150",
+    "founder": {"@type":"Person","name":"Michael Morrison"},
+    "areaServed": ["Cypress CA", "Los Alamitos CA", "La Palma CA", "Buena Park CA", "Orange County CA"],
+    "address": {"@type":"PostalAddress", "addressLocality":"Cypress", "addressRegion":"CA", "addressCountry":"US"},
+    "priceRange": "$$",
+    "url": "https://example.com"
+  }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Cypress Pup Co. home">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none"><path d="M20 31c0-5 4-9 9-9h6c5 0 9 4 9 9v11c0 5-4 9-9 9h-6c-5 0-9-4-9-9V31Z" fill="#fff"/><path d="M17 18c2-5 7-6 10-2 2 3 1 8-3 10-5 2-10-3-7-8Zm30 0c-2-5-7-6-10-2-2 3-1 8 3 10 5 2 10-3 7-8Z" fill="#fff"/><path d="M29 36c2 2 4 2 6 0" stroke="#1d2a2e" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="31" r="2.5" fill="#1d2a2e"/><circle cx="37" cy="31" r="2.5" fill="#1d2a2e"/></svg>
+        </span>
+        Cypress Pup Co.
+      </a>
+      <nav class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#process">How it works</a>
+        <a href="#area">Service area</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-primary" href="#book">Book a Free Meet &amp; Greet</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Dog walking &amp; pet sitting in Cypress, CA</div>
+          <h1>Reliable pet care with a sunny neighborhood touch.</h1>
+          <p class="lead">Cypress Pup Co. helps busy Orange County pet parents keep dogs happy, exercised, and cared for — with dependable walks, drop-in visits, overnight sitting, and clear communication from founder Michael Morrison.</p>
+          <div class="hero-actions">
+            <a class="btn btn-sun" href="#book">Book a Free Meet &amp; Greet</a>
+            <a class="btn btn-ghost" href="tel:+17145760150">Call or Text 714-576-0150</a>
+          </div>
+          <div class="trust-row" aria-label="Trust highlights">
+            <div class="trust-pill"><span class="icon-circle">✓</span><div><b>Founder-led care</b><span>One clear point of contact.</span></div></div>
+            <div class="trust-pill"><span class="icon-circle">📸</span><div><b>Photo updates</b><span>Know how every visit went.</span></div></div>
+            <div class="trust-pill"><span class="icon-circle">🦮</span><div><b>Meet first</b><span>We start with fit and safety.</span></div></div>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Dog walker image">
+          <div class="photo-shell"><img src="cypress-pup-co-hero.png" alt="Friendly Orange County dog walker walking happy dogs on a sunny neighborhood path" /></div>
+          <div class="floating-card">
+            <strong>Now accepting new local clients</strong>
+            <p>Serving Cypress, Los Alamitos, La Palma, Buena Park, and surrounding areas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Simple care options for everyday routines and travel days.</h2>
+          <p>Transparent starting prices help pet parents choose the right fit while allowing custom quotes for multi-pet homes, holidays, and special care needs.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon-circle">☀️</div>
+            <h3>Dog Walking</h3>
+            <p>Private neighborhood walks for exercise, enrichment, and reliable midday relief. Great for workdays and high-energy pups.</p>
+            <span class="price">From $25</span>
+          </article>
+          <article class="card">
+            <div class="icon-circle">🏡</div>
+            <h3>Drop-In Visits</h3>
+            <p>Potty breaks, feeding, water refreshes, playtime, medication reminders, and photo updates while you are away.</p>
+            <span class="price">From $25</span>
+          </article>
+          <article class="card">
+            <div class="icon-circle">🌙</div>
+            <h3>Overnight Pet Sitting</h3>
+            <p>In-home overnight care to keep pets comfortable in their routine, with added home presence and peace of mind.</p>
+            <span class="price">From $95/night</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div class="panel">
+          <h2>Built for trust before the first leash clip.</h2>
+          <p>As a new local business, Cypress Pup Co. earns confidence through professionalism, communication, and a clear intake process — not vague promises.</p>
+          <a class="btn btn-sun" href="#book">Start with a meet &amp; greet</a>
+        </div>
+        <div class="checklist">
+          <div class="check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Care notes before service starts</b><span>We learn your dog’s routine, temperament, leash rules, feeding instructions, and home access preferences.</span></div></div>
+          <div class="check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Updates after walks and visits</b><span>Expect clear communication, visit summaries, and photos so you are never left wondering.</span></div></div>
+          <div class="check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Limited-client launch availability</b><span>A focused client list helps protect quality, consistency, and reliability while the business grows.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How booking works.</h2>
+          <p>A streamlined intake flow keeps things personal for pet parents and operationally clean for a founder-led service.</p>
+        </div>
+        <div class="process">
+          <article class="step"><h3>Request</h3><p>Send your service needs, location, schedule, and pet details through the inquiry form.</p></article>
+          <article class="step"><h3>Meet</h3><p>Book a free meet &amp; greet to make sure the routine, access, and personality fit are right.</p></article>
+          <article class="step"><h3>Plan</h3><p>Confirm pricing, walk length, care notes, emergency contacts, and any home instructions.</p></article>
+          <article class="step"><h3>Relax</h3><p>Your pet gets reliable care and you get simple updates after each visit.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="area" class="service-area">
+      <div class="wrap area-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Local service area</div>
+          <h2 style="font-size:clamp(2rem,4vw,3.3rem);line-height:1;letter-spacing:-.055em;margin:18px 0 12px">Serving Cypress, Los Alamitos, La Palma, Buena Park, and surrounding areas.</h2>
+          <p style="color:var(--muted);font-size:1.08rem">This phrasing is best for overall conversion and SEO because it names the core city plus nearby search markets. It can also rank for “dog walker near me” searches when paired with your Google Business Profile.</p>
+          <div class="area-tags">
+            <span class="tag">Cypress</span><span class="tag">Los Alamitos</span><span class="tag">La Palma</span><span class="tag">Buena Park</span><span class="tag">West OC</span><span class="tag">Nearby neighborhoods</span>
+          </div>
+        </div>
+        <div class="map-card" aria-label="Stylized service area map">
+          <svg viewBox="0 0 600 420" fill="none" aria-hidden="true">
+            <path d="M50 102C164 68 248 91 337 58c86-32 155-3 210 39" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+            <path d="M34 260c92-25 151 6 234-22 96-32 166-2 286 58" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+            <path d="M120 375c65-92 72-174 53-322" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+            <path d="M402 384c-35-109-12-212 56-322" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+          </svg>
+          <div style="position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);background:#fff;border-radius:28px;padding:18px 22px;box-shadow:0 18px 50px rgba(29,42,46,.16);text-align:center;border:1px solid var(--line)">
+            <div style="font-size:2rem">🐾</div><b>Cypress Pup Co.</b><br><span style="color:var(--muted)">West Orange County</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap quote">
+        <div class="stars">★★★★★</div>
+        <p>“Professional, responsive, and genuinely caring — that is the standard Cypress Pup Co. is built to deliver from the very first client relationship.”</p>
+        <b>Michael Morrison, Founder</b>
+        <div class="placeholder-review">Replace this founder promise with verified client reviews as soon as your first testimonials are available.</div>
+      </div>
+    </section>
+
+    <section id="book">
+      <div class="wrap booking">
+        <div>
+          <h2>Book a Free Meet &amp; Greet</h2>
+          <p>Tell us what your pet needs. The form will package your request into a ready-to-send text message to Michael so you can launch without paying for complex software yet.</p>
+          <p><b>Prefer direct contact?</b><br><a href="tel:+17145760150" style="color:#ffd37c">Call or text 714-576-0150</a></p>
+        </div>
+        <form id="leadForm">
+          <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Jane Smith" required></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" placeholder="(714) 555-1234" required></div>
+          <div class="field"><label for="city">City / neighborhood</label><input id="city" name="city" placeholder="Cypress, Los Alamitos..." required></div>
+          <div class="field"><label for="service">Service needed</label><select id="service" name="service" required><option value="">Choose one</option><option>Dog walking</option><option>Drop-in visit</option><option>Overnight sitting</option><option>Not sure yet</option></select></div>
+          <div class="field full"><label for="pets">Pet details</label><textarea id="pets" name="pets" placeholder="Dog name, breed/size, schedule needed, temperament, and anything important." required></textarea></div>
+          <div class="success" id="successMsg">Your inquiry is ready. A text message window should open now — please press send.</div>
+          <p class="form-note">Launch MVP note: this static form opens SMS for fastest setup. Upgrade later to Calendly + Google Sheets + automated email/SMS.</p>
+          <button class="btn btn-sun" type="submit">Send Meet &amp; Greet Request</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head"><h2>Questions pet parents ask first.</h2><p>Clear answers reduce friction and make new leads feel safe before they contact you.</p></div>
+        <div class="faq">
+          <details open><summary>Do you require a meet &amp; greet?</summary><p>Yes. A free meet &amp; greet helps confirm your pet’s routine, leash behavior, home access, emergency contacts, and service fit before paid care begins.</p></details>
+          <details><summary>What areas do you serve?</summary><p>Cypress Pup Co. serves Cypress, Los Alamitos, La Palma, Buena Park, and nearby West Orange County neighborhoods. Some locations may require a travel adjustment.</p></details>
+          <details><summary>Do you send updates?</summary><p>Yes. After visits, you can receive a simple summary and photo update so you know your pet was cared for and comfortable.</p></details>
+          <details><summary>What are your starting prices?</summary><p>Walks and drop-ins start at $25. Overnight pet sitting starts at $95/night. Final pricing may vary by duration, number of pets, holidays, and travel distance.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div><b>Cypress Pup Co.</b><br>Dog walking, drop-ins &amp; overnight pet sitting in Cypress, CA.</div>
+      <div><b>Founder:</b> Michael Morrison<br><b>Call/Text:</b> <a href="tel:+17145760150">714-576-0150</a></div>
+      <div>© <span id="year"></span> Cypress Pup Co. All rights reserved.<br><span style="font-size:.9rem">Independent local pet care service.</span></div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <a class="btn btn-ghost" href="tel:+17145760150">Call/Text</a>
+    <a class="btn btn-sun" href="#book">Free Meet &amp; Greet</a>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const form = document.getElementById('leadForm');
+    const success = document.getElementById('successMsg');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = new FormData(form);
+      const msg = `Hi Michael, I’d like to book a free meet & greet with Cypress Pup Co.%0A%0AName: ${encodeURIComponent(data.get('name'))}%0APhone: ${encodeURIComponent(data.get('phone'))}%0ACity/Neighborhood: ${encodeURIComponent(data.get('city'))}%0AService: ${encodeURIComponent(data.get('service'))}%0APet details: ${encodeURIComponent(data.get('pets'))}`;
+      success.classList.add('show');
+      window.location.href = `sms:+17145760150?&body=${msg}`;
+    });
+  </script>
+</body>
+</html>
