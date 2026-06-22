@@ -113,7 +113,7 @@
     "areaServed": ["Cypress CA", "Los Alamitos CA", "La Palma CA", "Buena Park CA", "Orange County CA"],
     "address": {"@type":"PostalAddress", "addressLocality":"Cypress", "addressRegion":"CA", "addressCountry":"US"},
     "priceRange": "$$",
-    "url": "https://example.com"
+    "url": "https://github.com/mjmorrison10/cypresspupco"
   }
   </script>
 </head>
@@ -196,13 +196,13 @@
       <div class="wrap split">
         <div class="panel">
           <h2>Built for trust before the first leash clip.</h2>
-          <p>As a new local business, Cypress Pup Co. earns confidence through professionalism, communication, and a clear intake process — not vague promises.</p>
+          <p>Cypress Pup Co. earns confidence through professionalism, communication, and a clear intake process — so every visit starts with the right expectations.</p>
           <a class="btn btn-sun" href="#book">Start with a meet &amp; greet</a>
         </div>
         <div class="checklist">
           <div class="check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Care notes before service starts</b><span>We learn your dog’s routine, temperament, leash rules, feeding instructions, and home access preferences.</span></div></div>
           <div class="check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Updates after walks and visits</b><span>Expect clear communication, visit summaries, and photos so you are never left wondering.</span></div></div>
-          <div class="check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Limited-client launch availability</b><span>A focused client list helps protect quality, consistency, and reliability while the business grows.</span></div></div>
+          <div class="check"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Focused availability</b><span>A carefully managed schedule helps protect quality, consistency, and reliable arrival windows.</span></div></div>
         </div>
       </div>
     </section>
@@ -227,7 +227,7 @@
         <div>
           <div class="eyebrow"><span class="dot"></span> Local service area</div>
           <h2 style="font-size:clamp(2rem,4vw,3.3rem);line-height:1;letter-spacing:-.055em;margin:18px 0 12px">Serving Cypress, Los Alamitos, La Palma, Buena Park, and surrounding areas.</h2>
-          <p style="color:var(--muted);font-size:1.08rem">This phrasing is best for overall conversion and SEO because it names the core city plus nearby search markets. It can also rank for “dog walker near me” searches when paired with your Google Business Profile.</p>
+          <p style="color:var(--muted);font-size:1.08rem">Local, dependable care for busy pet parents across West Orange County. If you are nearby but do not see your city listed, reach out and we will confirm availability.</p>
           <div class="area-tags">
             <span class="tag">Cypress</span><span class="tag">Los Alamitos</span><span class="tag">La Palma</span><span class="tag">Buena Park</span><span class="tag">West OC</span><span class="tag">Nearby neighborhoods</span>
           </div>
@@ -248,10 +248,10 @@
 
     <section>
       <div class="wrap quote">
-        <div class="stars">★★★★★</div>
-        <p>“Professional, responsive, and genuinely caring — that is the standard Cypress Pup Co. is built to deliver from the very first client relationship.”</p>
-        <b>Michael Morrison, Founder</b>
-        <div class="placeholder-review">Replace this founder promise with verified client reviews as soon as your first testimonials are available.</div>
+        <div class="stars" aria-hidden="true">🐾 🐾 🐾</div>
+        <p>“My goal is simple: make your pet feel cared for and make your day easier with reliable service, clear updates, and genuine attention to the details that matter.”</p>
+        <b>Michael Morrison, Founder of Cypress Pup Co.</b>
+        <div class="placeholder-review">A founder-led promise for Cypress and nearby West Orange County pet parents.</div>
       </div>
     </section>
 
@@ -259,7 +259,7 @@
       <div class="wrap booking">
         <div>
           <h2>Book a Free Meet &amp; Greet</h2>
-          <p>Tell us what your pet needs. This upgraded form is ready for Google Sheets automation and can send qualified leads straight to a Calendly meet-and-greet booking step.</p>
+          <p>Tell us what your pet needs and choose a time for a free meet & greet. Michael will review your request and follow up to confirm the details.</p>
           <p><b>Prefer direct contact?</b><br><a href="tel:+17145760150" style="color:#ffd37c">Call or text 714-576-0150</a><br><a href="mailto:mjmorrisonusa@gmail.com" style="color:#ffd37c">mjmorrisonusa@gmail.com</a></p>
         </div>
         <form id="leadForm">
@@ -270,7 +270,7 @@
           <div class="field"><label for="service">Service needed</label><select id="service" name="service" required><option value="">Choose one</option><option>Dog walking</option><option>Drop-in visit</option><option>Overnight sitting</option><option>Not sure yet</option></select></div>
           <div class="field full"><label for="pets">Pet details</label><textarea id="pets" name="pets" placeholder="Dog name, breed/size, schedule needed, temperament, and anything important." required></textarea></div>
           <div class="success" id="successMsg">Thanks — your request is being prepared. Next, you can choose a meet-and-greet time.</div>
-          <p class="form-note">Automation-ready: connect the form to the Google Apps Script URL in the code, then every inquiry will save to Google Sheets and email Michael.</p>
+          <p class="form-note">After submitting, you will be guided to schedule your free meet & greet. You can also call, text, or email Michael directly.</p>
           <button class="btn btn-sun" type="submit">Send Request + Schedule</button>
           <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.22)" href="https://calendly.com/mjmorrisonusa/new-meeting" target="_blank" rel="noopener">Open Calendly</a>
         </form>
@@ -343,7 +343,7 @@
     form.addEventListener('submit', async function(e){
       e.preventDefault();
       const payload = buildPayload(new FormData(form));
-      success.textContent = 'Thanks — your request is being sent. Next, choose a meet-and-greet time.';
+      success.textContent = 'Thanks — your request is ready. Next, choose a meet-and-greet time.';
       success.classList.add('show');
 
       if(CONFIG.googleScriptUrl && CONFIG.googleScriptUrl.startsWith('https://script.google.com/')){
