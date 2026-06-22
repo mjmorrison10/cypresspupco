@@ -12,7 +12,7 @@
  */
 
 const NOTIFICATION_EMAIL = 'mjmorrisonusa@gmail.com';
-const CALENDLY_URL = 'https://calendly.com/mjmorrisonusa/free-meet-greet';
+const CALENDLY_URL = 'https://calendly.com/mjmorrisonusa/new-meeting';
 const SHEET_NAME = 'Leads';
 
 function doPost(e) {

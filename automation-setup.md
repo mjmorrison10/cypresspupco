@@ -32,7 +32,7 @@ Create a Calendly event:
 Suggested URL:
 
 ```text
-https://calendly.com/mjmorrisonusa/free-meet-greet
+https://calendly.com/mjmorrisonusa/new-meeting
 ```
 
 If Calendly gives you a different URL, update these places:
