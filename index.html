@@ -108,6 +108,7 @@
     "image": "cypress-pup-co-hero.png",
     "description": "Dog walking, drop-in visits, and overnight pet sitting in Cypress, CA and surrounding Orange County communities.",
     "telephone": "+17145760150",
+    "email": "mjmorrisonusa@gmail.com",
     "founder": {"@type":"Person","name":"Michael Morrison"},
     "areaServed": ["Cypress CA", "Los Alamitos CA", "La Palma CA", "Buena Park CA", "Orange County CA"],
     "address": {"@type":"PostalAddress", "addressLocality":"Cypress", "addressRegion":"CA", "addressCountry":"US"},
@@ -258,18 +259,20 @@
       <div class="wrap booking">
         <div>
           <h2>Book a Free Meet &amp; Greet</h2>
-          <p>Tell us what your pet needs. The form will package your request into a ready-to-send text message to Michael so you can launch without paying for complex software yet.</p>
-          <p><b>Prefer direct contact?</b><br><a href="tel:+17145760150" style="color:#ffd37c">Call or text 714-576-0150</a></p>
+          <p>Tell us what your pet needs. This upgraded form is ready for Google Sheets automation and can send qualified leads straight to a Calendly meet-and-greet booking step.</p>
+          <p><b>Prefer direct contact?</b><br><a href="tel:+17145760150" style="color:#ffd37c">Call or text 714-576-0150</a><br><a href="mailto:mjmorrisonusa@gmail.com" style="color:#ffd37c">mjmorrisonusa@gmail.com</a></p>
         </div>
         <form id="leadForm">
           <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Jane Smith" required></div>
           <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" placeholder="(714) 555-1234" required></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
           <div class="field"><label for="city">City / neighborhood</label><input id="city" name="city" placeholder="Cypress, Los Alamitos..." required></div>
           <div class="field"><label for="service">Service needed</label><select id="service" name="service" required><option value="">Choose one</option><option>Dog walking</option><option>Drop-in visit</option><option>Overnight sitting</option><option>Not sure yet</option></select></div>
           <div class="field full"><label for="pets">Pet details</label><textarea id="pets" name="pets" placeholder="Dog name, breed/size, schedule needed, temperament, and anything important." required></textarea></div>
-          <div class="success" id="successMsg">Your inquiry is ready. A text message window should open now — please press send.</div>
-          <p class="form-note">Launch MVP note: this static form opens SMS for fastest setup. Upgrade later to Calendly + Google Sheets + automated email/SMS.</p>
-          <button class="btn btn-sun" type="submit">Send Meet &amp; Greet Request</button>
+          <div class="success" id="successMsg">Thanks — your request is being prepared. Next, you can choose a meet-and-greet time.</div>
+          <p class="form-note">Automation-ready: connect the form to the Google Apps Script URL in the code, then every inquiry will save to Google Sheets and email Michael.</p>
+          <button class="btn btn-sun" type="submit">Send Request + Schedule</button>
+          <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.22)" href="https://calendly.com/mjmorrisonusa/free-meet-greet" target="_blank" rel="noopener">Open Calendly</a>
         </form>
       </div>
     </section>
@@ -290,7 +293,7 @@
   <footer>
     <div class="wrap footer-grid">
       <div><b>Cypress Pup Co.</b><br>Dog walking, drop-ins &amp; overnight pet sitting in Cypress, CA.</div>
-      <div><b>Founder:</b> Michael Morrison<br><b>Call/Text:</b> <a href="tel:+17145760150">714-576-0150</a></div>
+      <div><b>Founder:</b> Michael Morrison<br><b>Call/Text:</b> <a href="tel:+17145760150">714-576-0150</a><br><b>Email:</b> <a href="mailto:mjmorrisonusa@gmail.com">mjmorrisonusa@gmail.com</a></div>
       <div>© <span id="year"></span> Cypress Pup Co. All rights reserved.<br><span style="font-size:.9rem">Independent local pet care service.</span></div>
     </div>
   </footer>
@@ -302,14 +305,64 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    const CONFIG = {
+      // 1) Create the Google Apps Script from google-apps-script.js.
+      // 2) Deploy as a Web App.
+      // 3) Paste the deployment URL below. Leave blank to use the email fallback.
+      googleScriptUrl: '',
+      calendlyUrl: 'https://calendly.com/mjmorrisonusa/free-meet-greet',
+      notificationEmail: 'mjmorrisonusa@gmail.com'
+    };
+
     const form = document.getElementById('leadForm');
     const success = document.getElementById('successMsg');
-    form.addEventListener('submit', function(e){
+
+    function buildPayload(formData){
+      return {
+        submittedAt: new Date().toISOString(),
+        source: 'Cypress Pup Co. website',
+        name: formData.get('name') || '',
+        phone: formData.get('phone') || '',
+        email: formData.get('email') || '',
+        city: formData.get('city') || '',
+        service: formData.get('service') || '',
+        pets: formData.get('pets') || ''
+      };
+    }
+
+    function openEmailFallback(payload){
+      const subject = encodeURIComponent('New Cypress Pup Co. meet & greet request');
+      const body = encodeURIComponent(
+        `New meet & greet request from CypressPupCo.com\n\n` +
+        `Name: ${payload.name}\nPhone: ${payload.phone}\nEmail: ${payload.email}\n` +
+        `City/Neighborhood: ${payload.city}\nService: ${payload.service}\n\nPet details:\n${payload.pets}`
+      );
+      window.location.href = `mailto:${CONFIG.notificationEmail}?subject=${subject}&body=${body}`;
+    }
+
+    form.addEventListener('submit', async function(e){
       e.preventDefault();
-      const data = new FormData(form);
-      const msg = `Hi Michael, I’d like to book a free meet & greet with Cypress Pup Co.%0A%0AName: ${encodeURIComponent(data.get('name'))}%0APhone: ${encodeURIComponent(data.get('phone'))}%0ACity/Neighborhood: ${encodeURIComponent(data.get('city'))}%0AService: ${encodeURIComponent(data.get('service'))}%0APet details: ${encodeURIComponent(data.get('pets'))}`;
+      const payload = buildPayload(new FormData(form));
+      success.textContent = 'Thanks — your request is being sent. Next, choose a meet-and-greet time.';
       success.classList.add('show');
-      window.location.href = `sms:+17145760150?&body=${msg}`;
+
+      if(CONFIG.googleScriptUrl && CONFIG.googleScriptUrl.startsWith('https://script.google.com/')){
+        try {
+          await fetch(CONFIG.googleScriptUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: new URLSearchParams(payload).toString()
+          });
+          form.reset();
+          setTimeout(() => window.open(CONFIG.calendlyUrl, '_blank', 'noopener'), 650);
+        } catch (err) {
+          openEmailFallback(payload);
+        }
+      } else {
+        openEmailFallback(payload);
+        setTimeout(() => window.open(CONFIG.calendlyUrl, '_blank', 'noopener'), 900);
+      }
     });
   </script>
 </body>
